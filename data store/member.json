@@ -1,14 +1,23 @@
 [
     {
     "id" : "00000001",
-    "name" : "Hoang Vy Ky",
+    "role" : 1,
+    "name" : "Hoàng Vỹ Kỳ gay vai",
     "phoneNumber" : "0912314123",
     "address" : "Udindindindu Adindindindandan"
     },
     {
     "id"  : "00000002",
-    "name": "Pham Nam Phuc",
+    "role" : 0,
+    "name": "Phạm Nam Phúc",
     "phoneNumber" : "0912314133",
     "address" : "Adududu"
+    },
+    {
+    "id"  : "00000003",
+    "role" : 0,
+    "name": "Nich Ga",
+    "phoneNumber" : "0912314133",
+    "address" : "Adud2udu"
     }
 ]
