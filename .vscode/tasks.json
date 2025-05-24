@@ -1,0 +1,24 @@
+// .vscode/tasks.json
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build test.c",
+        "type": "shell",
+        "command": "gcc",
+        "args": [
+          "test.c",
+          "implement.c",
+          "-o",
+          "test.exe"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": [],
+        "detail": "Biên dịch test.c + implement.c thành test.exe"
+      }
+    ]
+  }
+  

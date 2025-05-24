@@ -1,0 +1,71 @@
+//******************************************************************************************************//
+// Các struct dữ liệu dùng trong Project
+//  - Member: Chứa thông tin của một thành viên trong dự án
+//
+//  - Project: Chứa thông tin của một dự án
+//
+//
+//
+//******************************************************************************************************//
+
+
+
+
+#ifndef STRUCT_H
+#define STRUCT_H
+#include <stdio.h>
+#include <string.h>
+
+#define MIN_MEMBER 3
+#define MAX_MEMBER 10
+#define Member_Array_size 100
+
+
+typedef struct Member {
+    long id;
+    long phoneNumber;
+    char name[50];
+    char role[20];
+    int age;
+    char address[200];
+    char email[100];
+} Member;
+
+typedef struct Project {
+    char name[50];
+    char projectID[10];
+    char memberID[MAX_MEMBER][8];
+    char description[200];
+    char startDate[20];
+    char endDate[20];
+    int status; //0: Pending, 1: Inprogress, 2: Completed, 3: Cancelled
+    Member members[10];
+} Project;
+
+
+
+
+
+//Cấu trúc dữ liệu dùng trong Project
+typedef struct Node {
+    Member data;
+    struct Node* next;
+} Node;
+
+typedef struct stack {
+    Member data;
+    struct Node* next;
+} stack;
+
+typedef struct memberList {
+    Member* data;
+    int size;
+    int cap;
+} memberList;
+
+
+
+
+
+
+#endif // STRUCT_H

@@ -1,0 +1,66 @@
+[
+    {
+    "name": "Du an phat trien bon cau bay thong minh",
+    "description": "Phat trien bon cau bay thong minh tien vao khong gian",
+    "member": [
+        {
+            "name": "Hoang Vy Ky",
+            "id": "00000001",
+            "role": "leader"
+        },
+        {
+            "name": "Pham Nam Phuc",
+            "id": "00000002",
+            "role": "Nghien cuu phat trien AI bon cau bay"
+        },
+        {
+            "name": "Hoang Minh Viet",
+            "id": "00000003",
+            "role": "xuong kho det"
+        }
+    ] 
+    }
+    ,
+    {
+        "name": "Lo vi song tich hop tu lanh",
+        "description": "Lo vi song tich hop tu lanh vua ham nong, vua bao quan thuc an",
+        "member": [
+            {
+                "name": "Hoang Vy Ky",
+                "id": "00000001",
+                "role": "leader"
+            },
+            {
+                "name": "Pham Nam Phuc",
+                "id": "00000002",
+                "role": "Nghien cuu phat trien AI bon cau bay"
+            },
+            {
+                "name": "Hoang Minh Viet",
+                "id": "00000003",
+                "role": "xuong kho det"
+            }
+        ] 
+    },
+    {
+        "name": "May lay lai quyen cong dan",
+        "description": "May lay lai quyen cong dan danh cho may thang da den",
+        "member": [
+            {
+                "name": "Hoang Vy Ky",
+                "id": "00000001",
+                "role": "leader"
+            },
+            {
+                "name": "Pham Nam Phuc",
+                "id": "00000002",
+                "role": "Nghien cuu phat trien AI bon cau bay"
+            },
+            {
+                "name": "Hoang Minh Viet",
+                "id": "00000003",
+                "role": "xuong kho det"
+            }
+        ] 
+    }
+]
