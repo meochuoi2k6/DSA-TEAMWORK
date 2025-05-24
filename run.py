@@ -6,12 +6,10 @@ from frontend.screens.main_screen import MainScreen
 
 
     
-
-
 def main():
     root = tk.Tk()
     root.title("Project Management Tool")
-    root.geometry("800x600")
+    root.geometry("800x800")
 
     def show_main_menu(username):
         login_frame = MainScreen(root, username)

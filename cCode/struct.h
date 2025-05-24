@@ -31,6 +31,20 @@ typedef struct Member {
     char email[100];
 } Member;
 
+
+//Sử dụng danh sách liên kết để kiểm soát tiến độ công việc
+typedef struct Task {
+    char taskID[10];
+    char projectID[10];
+    char title[100];
+    char description[200];
+    char assigneeID[8];
+    char dueDate[20];
+    int status;  // 0: Todo, 1: In Progress, 2: Done
+    struct Task* next;
+} Task;
+
+
 typedef struct Project {
     char name[50];
     char projectID[10];
@@ -40,21 +54,25 @@ typedef struct Project {
     char endDate[20];
     int status; //0: Pending, 1: Inprogress, 2: Completed, 3: Cancelled
     Member members[10];
+    Task* task;
 } Project;
-
-
 
 
 
 //Cấu trúc dữ liệu dùng trong Project
 typedef struct Node {
-    Member data;
+    void* data;
     struct Node* next;
 } Node;
+typedef struct doubleNode {
+    void* data;
+    struct doubleNode* next;
+    struct doubleNode* prev;
+} doubleNode;
 
 typedef struct stack {
-    Member data;
-    struct Node* next;
+    void* data;
+    struct stack* next;
 } stack;
 
 typedef struct memberList {

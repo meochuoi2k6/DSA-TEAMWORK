@@ -6,7 +6,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA_PATH = os.path.join(BASE_DIR, "data store", "password.json")
-
+ID_PATH = os.path.join(BASE_DIR, "data store", "member.json")
 class LoginScreen(tk.Frame):
     def __init__(self, master, on_login_success):
         super().__init__(master)
@@ -42,21 +42,33 @@ class LoginScreen(tk.Frame):
 
     def check_credentials(self, username, password, filepath = DATA_PATH):
         if not os.path.exists(filepath):
-            return False
+            return None
         with open(filepath, "r", encoding="utf-8") as f:
             users = json.load(f)
         for user in users:
             if user["username"] == username and user["password"] == password:
-                return True
-        return False
-
+                return user["id"]
+        return None
+    def get_info (self, user_id):
+        filepath = os.path.join(BASE_DIR, "data store", "member.json")
+        if not os.path.exists(filepath):
+            return None
+        with open(filepath, "r", encoding="utf-8") as f:
+            members = json.load(f)
+        for member in members:
+            if member["id"] == user_id:
+                return member
+        return None
+            
     def login(self):
         username = self.username_entry.get()
         password = self.password_entry.get()
-        if self.check_credentials(username, password):
+        user_id = self.check_credentials(username, password)
+        if user_id:
             self.error_label.config(text="")
             self.pack_forget()  
-            self.on_login_success(username)
+            name = self.get_info(user_id)
+            self.on_login_success(name)
         else:
             self.error_label.config(text="Invalid username or password.")
             self.after(2000, lambda: self.error_label.config(text=""))

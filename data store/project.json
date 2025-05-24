@@ -26,19 +26,14 @@
         "description": "Lo vi song tich hop tu lanh vua ham nong, vua bao quan thuc an",
         "member": [
             {
-                "name": "Hoang Vy Ky",
-                "id": "00000001",
-                "role": "leader"
+                "id": "00000001"
             },
             {
-                "name": "Pham Nam Phuc",
-                "id": "00000002",
-                "role": "Nghien cuu phat trien AI bon cau bay"
+                "id": "00000002"
+                
             },
             {
-                "name": "Hoang Minh Viet",
-                "id": "00000003",
-                "role": "xuong kho det"
+                "id": "00000003"
             }
         ] 
     },
@@ -47,19 +42,19 @@
         "description": "May lay lai quyen cong dan danh cho may thang da den",
         "member": [
             {
-                "name": "Hoang Vy Ky",
-                "id": "00000001",
-                "role": "leader"
+                
+                "id": "00000001"
+                
             },
             {
-                "name": "Pham Nam Phuc",
-                "id": "00000002",
-                "role": "Nghien cuu phat trien AI bon cau bay"
+                
+                "id": "00000002"
+                
             },
             {
-                "name": "Hoang Minh Viet",
-                "id": "00000003",
-                "role": "xuong kho det"
+                
+                "id": "00000003"
+                
             }
         ] 
     }

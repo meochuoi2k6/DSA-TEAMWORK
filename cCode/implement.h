@@ -11,16 +11,16 @@ void printError (int errorCode);
 
 
 // Danh sách các hàm của linked listlist
-Node* createNode (Member data);
-void displayList(Node *head);
-void appendNode (Node **head, Member data);
+Node* createNode (void* data, size_t dataSize);
+void appendNode (Node **head, void* data, size_t dataSize);
 void popNode (Node **head);
-void insertAtPossition (Node **head, Member data, int position);
+void insertAtPossition (Node **head, void* data, size_t dataSize, int position);
 void deleteNodeAtPosition (Node **head, int position);
+void freeList (Node *head);
 
 
 // Danh sách các hàm của stack
-void push(stack **top, Member data);
+void push(stack **top, void *data);
 Member top (stack *root);
 void pop(stack **top);
 int stackStatus (stack *root);

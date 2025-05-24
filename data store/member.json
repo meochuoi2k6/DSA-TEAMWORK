@@ -1,0 +1,14 @@
+[
+    {
+    "id" : "00000001",
+    "name" : "Hoang Vy Ky",
+    "phoneNumber" : "0912314123",
+    "address" : "Udindindindu Adindindindandan"
+    },
+    {
+    "id"  : "00000002",
+    "name": "Pham Nam Phuc",
+    "phoneNumber" : "0912314133",
+    "address" : "Adududu"
+    }
+]

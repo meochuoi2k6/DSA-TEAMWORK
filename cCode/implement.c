@@ -37,18 +37,26 @@ void printError (int errorCode) {
 
 
 //Các hàm của Link ListList
-Node *createNode (Member data) {
+Node *createNode (void *data, size_t dataSize) {
     Node *newNode = (Node *)malloc(sizeof(Node));
     if (newNode == NULL) {
         printError(101);
         return NULL;
     }
-    newNode->data = data;
+    newNode->data = malloc(dataSize);
+    if (newNode->data == NULL) {
+        printError(102); // lỗi cấp phát dữ liệu
+        free(newNode);
+        return NULL;
+    }
+
+    memcpy(newNode->data, data, dataSize); // sao chép dữ liệu vào node
     newNode->next = NULL;
+
     return newNode;
 }
-void appendNode (Node **head, Member data) {
-    Node *newNode = createNode(data);
+void appendNode (Node **head, void* data, size_t dataSize) {
+    Node *newNode = createNode(data, dataSize);
     if (newNode == NULL) {
         printError(101);
         return;
@@ -63,8 +71,8 @@ void appendNode (Node **head, Member data) {
         current->next = newNode;
     }
 }
-void addNode (Node **head, Member data) {       //Add ở đây nghĩa là thêm vào đầu danh sách
-    Node *newNode = createNode(data);
+void addNode (Node **head, void* data, size_t dataSize) {       //Add ở đây nghĩa là thêm vào đầu danh sách
+    Node *newNode = createNode(data, dataSize);
     if (newNode == NULL) {
         printError(101);
         return;
@@ -72,12 +80,12 @@ void addNode (Node **head, Member data) {       //Add ở đây nghĩa là thêm
     newNode->next = *head;
     *head = newNode;
 }
-void insertAtPossition (Node **head, Member data, int position) {
+void insertAtPossition (Node **head, void* data, size_t dataSize, int position) {   //Thêm ở vị trí bất kì
     if (position < 0) {
         printError(103);
         return;
     }
-    Node *newNode = createNode(data);
+    Node *newNode = createNode(data, dataSize);
     if (newNode == NULL) {
         printError(101);
         return;
@@ -93,22 +101,24 @@ void insertAtPossition (Node **head, Member data, int position) {
     }
     if (current == NULL) {
         printError(103);
+        free(newNode->data);
         free(newNode);
         return;
     }
     newNode->next = current->next;
     current->next = newNode;
 } 
-void popNode (Node **head) {
+void popNode (Node **head) {    //Xóa node đầu
     if (*head == NULL) {
         printError(102);
         return;
     }
     Node *temp = *head;
     *head = (*head)->next;
+    free(temp->data);
     free(temp);
 }
-void deleteNodeAtPosition (Node **head, int position) {
+void deleteNodeAtPosition (Node **head, int position) { //Xóa node ở vị trí nào đó
     if (*head == NULL) {
         printError(102);
         return;
@@ -116,6 +126,7 @@ void deleteNodeAtPosition (Node **head, int position) {
     Node *temp = *head;
     if (position == 0) {
         *head = (*head)->next;
+        free(temp->data);
         free(temp);
         return;
     }
@@ -128,7 +139,17 @@ void deleteNodeAtPosition (Node **head, int position) {
     }
     Node *toDelete = temp->next;
     temp->next = toDelete->next;
+    free(toDelete->data);
     free(toDelete);
+}
+void freeList(Node *head) { //Bay màu bộ nhớ
+    Node *tmp;
+    while (head) {
+        tmp = head;
+        head = head->next;
+        free(tmp->data);
+        free(tmp);
+    }
 }
 
 
@@ -136,7 +157,7 @@ void deleteNodeAtPosition (Node **head, int position) {
 
 
 //Các hàm của Stack
-void push (stack **top, Member data) {
+void push (stack **top, void* data) {
     stack *newNode = (stack *)malloc(sizeof(stack));
     if (newNode == NULL) {
         printError(101);
@@ -146,7 +167,7 @@ void push (stack **top, Member data) {
     newNode->next = *top;
     *top = newNode;
 }
-Member top (stack *root) {
+void* top (stack *root) {
     if (root == NULL) {
         printError(102);
     }
@@ -222,19 +243,7 @@ void memberListInsert (memberList *arr, Member member, int pos) {
 
 
 //Test zone         ĐHS t làm cái này làm gì :)))))
-void displayList(Node *head) {
-    Node *current = head;
-    while (current != NULL) {
-        printf("ID: %ld, Phone Number: %ld, Name: %s, Age: %d, Address: %s, Email: %s\n",
-               current->data.id,
-               current->data.phoneNumber,
-               current->data.name,
-               current->data.age,
-               current->data.address,
-               current->data.email);
-        current = current->next;
-    }
-}
+
 
 
 
