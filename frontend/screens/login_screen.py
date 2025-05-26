@@ -2,18 +2,24 @@ import tkinter as tk
 from tkinter import messagebox, font
 import json
 import os
+from middleware.log import log_setting
 
-
+logger = log_setting(__name__)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA_PATH = os.path.join(BASE_DIR, "data store", "password.json")
 ID_PATH = os.path.join(BASE_DIR, "data store", "member.json")
+
+#Setting cho logs:
+
+
+
 class LoginScreen(tk.Frame):
     def __init__(self, master, on_login_success):
         super().__init__(master)
         self.master = master
         self.on_login_success = on_login_success
         self.pack(expand=True, fill='both')
-
+        logger.info("Khởi động module Login")
         # Tạo font lớn
         large_font = font.Font(size=14)
         center_font = font.Font(size=25, weight='bold')
@@ -65,11 +71,13 @@ class LoginScreen(tk.Frame):
         password = self.password_entry.get()
         user_id = self.check_credentials(username, password)
         if user_id:
+            logger.info(f"Đăng nhập thành công '{username}'")
             self.error_label.config(text="")
             self.pack_forget()  
             name = self.get_info(user_id)
             self.on_login_success(name)
         else:
+            logger.warning(f"Đăng nhập không thành công'{username}'")
             self.error_label.config(text="Invalid username or password.")
             self.after(2000, lambda: self.error_label.config(text=""))
             self.username_entry.delete(0, tk.END)
