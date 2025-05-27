@@ -1,3 +1,6 @@
 [2025-05-26 12:52:20,590] [INFO] [__main__] - Khởi động ứng dụng thành công
 [2025-05-26 12:52:20,630] [INFO] [frontend.screens.login_screen] - Khởi động module Login
 [2025-05-26 12:52:25,019] [INFO] [frontend.screens.login_screen] - Đăng nhập thành công 'admin'
+[2025-05-26 14:15:59,430] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-26 14:15:59,505] [INFO] [frontend.screens.login_screen] - Khởi động module Login
+[2025-05-26 14:16:10,114] [WARNING] [frontend.screens.login_screen] - Đăng nhập không thành công'a'
