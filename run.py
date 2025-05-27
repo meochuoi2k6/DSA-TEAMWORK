@@ -15,7 +15,6 @@ def main():
     def show_main_menu(username):
         login_frame = MainScreen(root, username)
         login_frame.pack()
-
     LoginScreen(root, show_main_menu)
     tk.mainloop()
 

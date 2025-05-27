@@ -2,21 +2,16 @@
     {
     "name": "Du an phat trien bon cau bay thong minh",
     "description": "Phat trien bon cau bay thong minh tien vao khong gian",
+    "projectId" : "0000000001",
     "member": [
         {
-            "name": "Hoang Vy Ky",
-            "id": "00000001",
-            "role": "leader"
+            "id": "00000001"
         },
         {
-            "name": "Pham Nam Phuc",
-            "id": "00000002",
-            "role": "Nghien cuu phat trien AI bon cau bay"
+            "id": "00000002"
         },
         {
-            "name": "Hoang Minh Viet",
-            "id": "00000003",
-            "role": "xuong kho det"
+            "id": "00000003"
         }
     ] 
     }
@@ -24,6 +19,7 @@
     {
         "name": "Lo vi song tich hop tu lanh",
         "description": "Lo vi song tich hop tu lanh vua ham nong, vua bao quan thuc an",
+        "projectId" : "0000000002",
         "member": [
             {
                 "id": "00000001"
@@ -40,11 +36,10 @@
     {
         "name": "May lay lai quyen cong dan",
         "description": "May lay lai quyen cong dan danh cho may thang da den",
+        "projectId" : "0000000003",
         "member": [
-            {
-                
-                "id": "00000001"
-                
+            {               
+                "id": "00000001"            
             },
             {
                 

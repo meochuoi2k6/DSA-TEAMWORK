@@ -10,181 +10,113 @@
 
 
 
-
-
-
-#include "cJSON.h"
 #include "struct.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <inttypes.h>
+#include <ctype.h>
 
 
-
-#define JSON_MEMBER_FILE "../data/member.json"
-#define JSON_PROJECT_FILE "../data/project.json"
-
+#define JSON_MEMBER_FILE "../data store/member.json"
+#define JSON_PROJECT_FILE "../data store/project.json"
+#define PATH_TO_LASTEST_ID "../data store/lastest_id.txt"
+//******************************************************************************************************//
 //Xử lí file JSON, load dữ liệu từ file JSON vào struct
-int load_Project_from_json (cJSON **root) {
-    FILE *file = fopen(JSON_PROJECT_FILE, "r");
-    if (!file) {
-        *root = cJSON_CreateArray();
-        return 0;
+
+// ...existing code...
+
+// Sửa hàm get_next_project_id để nhận tham số đường dẫn file
+char* get_next_project_id(const char* path) {
+    FILE *f = fopen(path, "r+");
+    if (f == NULL) {
+        perror("Không thể mở file");
+        return NULL;
     }
-    fseek(file, 0, SEEK_END);
-    long len = ftell(file);
-    rewind(file);
 
-    char *data = (char *)malloc(len + 1);
-    fread(data, 1, len, file);
-    data[len] = '\0';
-    fclose(file);
+    char buffer[32]; // Đủ chứa dòng + newline + \0
+    long line2_pos = 0;
+    int line_number = 0;
 
-
-    *root = cJSON_Parse(data);
-    free(data);
-
-    if (!*root) {
-        *root = cJSON_CreateArray();
-        return 0;
-    }
-    return cJSON_GetArraySize(*root);
-}
-
-int is_duplicated_id (cJSON *root, const char *id) {
-    int size = cJSON_GetArraySize(root);
-    for (int i = 0; i < size; i++) {
-        cJSON *curr = cJSON_GetArrayItem(root, i);
-        cJSON *id = cJSON_GetObjectItem(curr, "id");
-        if (id && strcmp(id->valueint, id) == 0) {
-            return 1; // ID đã tồn tại
+    // Đọc từng dòng, nhớ vị trí bắt đầu dòng 2
+    while (fgets(buffer, sizeof(buffer), f) != NULL) {
+        line_number++;
+        if (line_number == 2) {
+            // Vị trí bắt đầu dòng 2 = vị trí hiện tại trừ độ dài dòng vừa đọc
+            line2_pos = ftell(f) - strlen(buffer);
+            break;
         }
     }
-    return 0; //UNIQUE ID
+
+    if (line_number < 2) {
+        fclose(f);
+        fprintf(stderr, "File không có đủ 2 dòng\n");
+        return NULL;
+    }
+
+    // Loại bỏ newline nếu có (cả \r và \n)
+    size_t pos = strcspn(buffer, "\r\n");
+    buffer[pos] = '\0';  // An toàn vì pos <= strlen(buffer)
+
+    // Sao chép chuỗi gốc (dòng 2) để trả về
+    char *original = malloc(strlen(buffer) + 1);
+    if (original == NULL) {
+        fclose(f);
+        fprintf(stderr, "Không đủ bộ nhớ\n");
+        return NULL;
+    }
+    strcpy(original, buffer);
+
+    // Chuyển sang số rồi tăng
+    uint64_t val = strtoull(buffer, NULL, 10);
+    val += 10;
+
+    // Ghi lại giá trị mới với định dạng 9 chữ số zero-padded + newline
+    fseek(f, line2_pos, SEEK_SET);
+    fprintf(f, "%09" PRIu64 "\n", val);
+    fclose(f);
+
+    return original;
 }
 
+// ...existing code...
 
-
-
-
-
-
-
-
-
-// void save_member_to_json(const char *filename, Node *head) {
-//     cJSON *json_array = cJSON_CreateArray();
-
-
-//     Node *curr = head;
-//     while (curr != NULL) {
-//         cJSON *json_member = cJSON_CreateObject();
-//         cJSON_AddNumberToObject(json_member, "id", curr->data.id);
-//         cJSON_AddNumberToObject(json_member, "phoneNumber", curr->data.phoneNumber);
-//         cJSON_AddStringToObject(json_member, "name", curr->data.name);
-//         cJSON_AddNumberToObject(json_member, "age", curr->data.age);
-//         cJSON_AddStringToObject(json_member, "address", curr->data.address);
-//         cJSON_AddStringToObject(json_member, "email", curr->data.email);
-
-//         cJSON_AddItemToArray(json_array, json_member);
-
-//         curr = curr->next;
-//     }
-//     char *json_str = cJSON_Print(json_array);
-//     FILE *file = fopen(filename, "w");
-//      if (file == NULL) {
-//         perror("Error opening file to write JSON");
-//         cJSON_Delete(json_array);
-//         free(json_str);
-//         return;
-//     }
-//     fprintf(file, "%s", json_str);
-//     fclose(file);
-
-//     // Release memory
-//     free(json_str);
-//     cJSON_Delete(json_array);
-
-//     printf("Data saved to %s\n", filename);
-
-// }
-
-
-
-//Check Credential
-int is_leap_year (int year) {   //Check năm nhuận
-        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
-    }
-int valid_date (const char *date) {
-    if (strlen(date) != 10) {
-        return 0; // Luôn là 10 ký tự
-    }
-    if (date[2] != '/' || date[5] != '/') {
-        return 0; // Phải có định dạng dd/mm/yyyy
-    }
-    char day_str[3], month_str[3], year_str[5];
-    strncpy(day_str, date, 2);
-    day_str[2] = '\0';
-    strncpy(month_str, date + 3, 2);
-    month_str[2] = '\0';
-    strncpy(year_str, date + 6, 4);
-    year_str[4] = '\0';
-
-    // Kiểm tra toàn bộ là số
-    for (int i = 0; i < 2; ++i) {
-        if (!isdigit(day_str[i]) || !isdigit(month_str[i])) return 0;
-    }
-    for (int i = 0; i < 4; ++i) {
-        if (!isdigit(year_str[i])) return 0;
-    }
-
-
-    int day = atoi(day_str);
-    int month = atoi(month_str);
-    if (month < 1 || month > 12) {
-        return 0; // Tháng không hợp lệ
-    }
-    int year = atoi(year_str);
-
-    int max_days_each_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    if (is_leap_year(year)) max_days_each_month[1] = 29;
-
-    // Kiểm tra ngày hợp lệ
-    if (day < 1 || day > max_days_each_month[month - 1]) return 0;
-
-    return 1; // Ngày hợp lệ
-}
-
-
-
-
-Project Register_a_Project () {
+Project create_project(const char* creator, const char *name, const char *desc) {
     Project project;
-    printf("Enter project name: ");
-    fgets(project.name, 50, stdin);
-    strip_newline(project.name);
+    memset(&project, 0, sizeof(Project));  // Đảm bảo không có rác
 
-    printf("Enter project ID: ");
-    fgets(project.projectID, 10, stdin);
-    strip_newline(project.projectID);
+    strncpy(project.name, name, sizeof(project.name) - 1);
+    strncpy(project.description, desc, sizeof(project.description) - 1);
+    project.description[sizeof(project.description) - 1] = '\0'; // Đảm bảo chuỗi kết thúc
+    strncpy(project.ownerID, creator, sizeof(project.ownerID) - 1);
+    project.status = 0;
 
-    printf("Enter project description: ");
-    fgets(project.description, 200, stdin);
-    strip_newline(project.description);
+    char *id = get_next_project_id(PATH_TO_LASTEST_ID);
 
+    strncpy(project.projectID, id, sizeof(project.projectID) - 1);
+    free(id);
 
-    printf("Enter start date (YYYY-MM-DD): ");
-    do {
-        fgets(project.startDate, 20, stdin);
-        strip_newline(project.startDate);
-    } while (valid_date(project.startDate));
-    printf("Enter end date (YYYY-MM-DD): ");
-    do {
-        fgets(project.endDate, 20, stdin);
-        strip_newline(project.endDate);
-    } while (valid_date(project.endDate));
-    project.status = 0; // Mặc định là pending mỗi lần tạotạo
+    // TODO: save_Project_to_json(project);
 
     return project;
+}
+
+
+
+
+
+
+
+// Testinggggg
+
+int main () {
+    
+    Project project;
+    project = create_project("Shiro", "Project A", "This is a test project");
+    printf("Project created with ID: %s\n", project.projectID);
+    printf("Project Name: %s\n", project.name);
+    printf("Project Description: %s\n", project.description);
+    printf("Project Owner ID: %s\n", project.ownerID);
+
 }

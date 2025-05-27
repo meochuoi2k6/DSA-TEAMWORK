@@ -21,7 +21,7 @@ void freeList (Node *head);
 
 // Danh sách các hàm của stack
 void push(stack **top, void *data);
-Member top (stack *root);
+void* top (stack *root);
 void pop(stack **top);
 int stackStatus (stack *root);
 
