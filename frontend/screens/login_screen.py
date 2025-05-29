@@ -3,14 +3,14 @@ from tkinter import messagebox, font
 import json
 import os
 from middleware.log import log_setting
+import logging
 
-logger = log_setting(__name__)
+logger = logging.getLogger(__name__)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA_PATH = os.path.join(BASE_DIR, "data store", "password.json")
 ID_PATH = os.path.join(BASE_DIR, "data store", "member.json")
 
 #Setting cho logs:
-
 
 
 class LoginScreen(tk.Frame):

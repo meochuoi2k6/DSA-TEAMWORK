@@ -1,0 +1,74 @@
+[2025-05-29 14:03:32,055] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:03:32,443] [INFO] [__main__] - Test log ngay sau khi show log window
+[2025-05-29 14:03:32,449] [INFO] [frontend.screens.login_screen] - Khởi động module Login
+[2025-05-29 14:03:37,803] [INFO] [frontend.screens.login_screen] - Đăng nhập thành công 'admin'
+[2025-05-29 14:03:37,813] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-29 14:04:06,106] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-05-29 14:04:26,403] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-05-29 14:05:31,682] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:05:31,730] [INFO] [__main__] - Test log ngay sau khi show log window
+[2025-05-29 14:05:31,730] [INFO] [frontend.screens.login_screen] - Khởi động module Login
+[2025-05-29 14:05:38,425] [WARNING] [frontend.screens.login_screen] - Đăng nhập không thành công'admin'
+[2025-05-29 14:05:43,983] [INFO] [frontend.screens.login_screen] - Đăng nhập thành công 'admin'
+[2025-05-29 14:05:43,989] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-29 14:13:35,823] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:13:36,534] [INFO] [__main__] - Test log ngay sau khi show log window adadada
+[2025-05-29 14:13:36,535] [INFO] [frontend.screens.login_screen] - Khởi động module Login
+[2025-05-29 14:16:02,296] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:16:02,336] [INFO] [__main__] - Test log ngay sau khi show log window adadada
+[2025-05-29 14:16:02,336] [INFO] [frontend.screens.login_screen] - Khởi động module Login
+[2025-05-29 14:16:10,105] [INFO] [frontend.screens.login_screen] - Đăng nhập thành công 'admin'
+[2025-05-29 14:16:10,125] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-29 14:17:15,896] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:17:15,924] [INFO] [__main__] - Test log ngay sau khi show log window adadada
+[2025-05-29 14:17:15,926] [INFO] [frontend.screens.login_screen] - Khởi động module Login
+[2025-05-29 14:17:23,965] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:17:24,003] [INFO] [__main__] - Test log ngay sau khi show log window adadada
+[2025-05-29 14:17:24,003] [INFO] [frontend.screens.login_screen] - Khởi động module Login
+[2025-05-29 14:17:34,202] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:17:34,238] [INFO] [__main__] - Test log ngay sau khi show log window adadada
+[2025-05-29 14:17:34,239] [INFO] [frontend.screens.login_screen] - Khởi động module Login
+[2025-05-29 14:18:19,870] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:18:19,906] [INFO] [__main__] - Test log ngay sau khi show log window adadada
+[2025-05-29 14:18:19,906] [INFO] [frontend.screens.login_screen] - Khởi động module Login
+[2025-05-29 14:18:25,714] [INFO] [frontend.screens.login_screen] - Đăng nhập thành công 'admin'
+[2025-05-29 14:18:25,720] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-29 14:26:13,911] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:26:13,961] [INFO] [__main__] - Test log ngay sau khi show log window adadada
+[2025-05-29 14:26:13,961] [INFO] [frontend.screens.login_screen] - Khởi động module Login
+[2025-05-29 14:26:19,910] [INFO] [frontend.screens.login_screen] - Đăng nhập thành công 'admin'
+[2025-05-29 14:26:19,918] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-29 14:31:38,585] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:31:38,624] [INFO] [__main__] - Test log ngay sau khi show log window adadada
+[2025-05-29 14:31:44,909] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-29 14:36:04,577] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:36:04,613] [INFO] [__main__] - Test log ngay sau khi show log window adadada
+[2025-05-29 14:36:04,613] [DEBUG] [__main__] - Test debug
+[2025-05-29 14:36:18,929] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-29 14:42:17,831] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:42:17,889] [INFO] [__main__] - Test log ngay sau khi show log window adadada
+[2025-05-29 14:42:17,889] [DEBUG] [__main__] - Test debug
+[2025-05-29 14:42:23,672] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-29 14:42:30,989] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-05-29 14:45:04,266] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:45:04,313] [INFO] [__main__] - Test log ngay sau khi show log window adadada
+[2025-05-29 14:45:04,314] [DEBUG] [__main__] - Test debug
+[2025-05-29 14:45:12,245] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-29 14:45:18,865] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-05-29 14:45:29,908] [WARNING] [frontend.screens.main_screen] - Người dùng {self.user.info.get('name',)} đang cố gắng tạo dự án mới
+[2025-05-29 14:45:33,581] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-05-29 14:45:35,013] [WARNING] [frontend.screens.main_screen] - Người dùng {self.user.info.get('name',)} đang cố gắng tạo dự án mới
+[2025-05-29 14:48:02,850] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:48:02,910] [INFO] [__main__] - Test log ngay sau khi show log window adadada
+[2025-05-29 14:48:02,911] [DEBUG] [__main__] - Test debug
+[2025-05-29 14:48:07,804] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-29 14:48:10,366] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-05-29 14:48:13,925] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-05-29 14:48:15,300] [WARNING] [frontend.screens.main_screen] - Người dùng {self.user.info.get('name',)} đang cố gắng tạo dự án mới
+[2025-05-29 14:48:17,840] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-05-29 14:49:43,111] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-29 14:49:43,169] [INFO] [__main__] - Test log ngay sau khi show log window adadada
+[2025-05-29 14:49:43,169] [DEBUG] [__main__] - Test debug
+[2025-05-29 14:49:47,497] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-29 14:49:56,452] [WARNING] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang cố gắng tạo dự án mới
+[2025-05-29 14:49:59,212] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án

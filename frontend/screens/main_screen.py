@@ -2,7 +2,8 @@ import tkinter as tk
 from tkinter import messagebox
 import json
 import os
-
+from middleware.log import log_setting
+logger = log_setting(__name__)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PROJECT_PATH = os.path.join(BASE_DIR, "data store", "project.json")
 MEMBER_PATH = os.path.join(BASE_DIR, "data store", "member.json")
@@ -29,13 +30,14 @@ class MainScreen(tk.Frame):
         self.project_display = tk.Text(self, wrap="word", width=80, height=20)
         self.project_display.pack(padx=10, pady=10)
         self.project_display.config(state='disabled')
-
+        logger.info(f"Đã vào màn hình chính")
     def clear_display(self):
         self.project_display.config(state='normal')
         self.project_display.delete("1.0", tk.END)
 
     def selfInfo(self):
         self.clear_display()
+        logger.info(f"Người dùng {self.user_info.get('name', 'Người dùng')} đang xem thông tin cá nhân")
         self.project_display.insert(tk.END, "THÔNG TIN CÁ NHÂN\n\n")
         for key, value in self.user_info.items():
             self.project_display.insert(tk.END, f"{key}: {value}\n")
@@ -43,7 +45,7 @@ class MainScreen(tk.Frame):
 
     def show_projects_list(self, filepath=PROJECT_PATH):
         self.clear_display()
-
+        logger.info(f"Người dùng {self.user_info.get('name', 'Người dùng')} đang xem danh sách dự án")
         if not os.path.exists(filepath):
             messagebox.showerror("Lỗi", f"Không tìm thấy file {filepath}")
             return
@@ -69,6 +71,7 @@ class MainScreen(tk.Frame):
         self.project_display.config(state='disabled')
 
     def create_project(self):
+        logger.warning(f"Người dùng {self.user_info.get('name',)} đang cố gắng tạo dự án mới")
         messagebox.showerror("Lỗi", "Tính năng đang trong quá trình phát triển")
 
 

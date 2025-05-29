@@ -1,23 +1,30 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import scrolledtext
 from frontend.screens.login_screen import LoginScreen
 from frontend.screens.main_screen import MainScreen
 from middleware.log import log_setting
-
+from middleware.GuiLogHandler import GuiLogHandler
+from frontend.screens.logScreen import show_log_window
 
 logger = log_setting(__name__)
+
 def main():
     logger.info("Khởi động ứng dụng thành công")
+
     root = tk.Tk()
     root.title("Project Management Tool")
     root.geometry("800x800")
 
+    # Hiển thị cửa sổ Log Screen
+    show_log_window(logger)
+    logger.info("Test log ngay sau khi show log window adadada")
+    logger.debug("Test debug")
     def show_main_menu(username):
-        login_frame = MainScreen(root, username)
-        login_frame.pack()
+        main_frame = MainScreen(root, username)
+        main_frame.pack()
+
     LoginScreen(root, show_main_menu)
-    tk.mainloop()
+    root.mainloop()
 
 if __name__ == "__main__":
     main()
-        
