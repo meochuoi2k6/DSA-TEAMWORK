@@ -19,5 +19,12 @@
     "name": "Nich Ga",
     "phoneNumber" : "0912314133",
     "address" : "Adud2udu"
+    },
+    {
+        "id" : "00000004",
+        "role" : 1,
+        "name" : "Shiro",
+        "phoneNumber" : "0182639132",
+        "address" : "Unknown"
     }
 ]

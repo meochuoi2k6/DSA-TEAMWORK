@@ -9,7 +9,6 @@ from frontend.screens.logScreen import show_log_window
 logger = log_setting(__name__)
 
 def main():
-    logger.info("Khởi động ứng dụng thành công")
 
     root = tk.Tk()
     root.title("Project Management Tool")
@@ -17,8 +16,7 @@ def main():
 
     # Hiển thị cửa sổ Log Screen
     show_log_window(logger)
-    logger.info("Test log ngay sau khi show log window adadada")
-    logger.debug("Test debug")
+    logger.info("Khởi động ứng dụng thành công")
     def show_main_menu(username):
         main_frame = MainScreen(root, username)
         main_frame.pack()
