@@ -35,15 +35,13 @@ char* get_next_project_id(const char* path) {
         return NULL;
     }
 
-    char buffer[32]; // Đủ chứa dòng + newline + \0
+    char buffer[32];
     long line2_pos = 0;
     int line_number = 0;
 
-    // Đọc từng dòng, nhớ vị trí bắt đầu dòng 2
     while (fgets(buffer, sizeof(buffer), f) != NULL) {
         line_number++;
         if (line_number == 2) {
-            // Vị trí bắt đầu dòng 2 = vị trí hiện tại trừ độ dài dòng vừa đọc
             line2_pos = ftell(f) - strlen(buffer);
             break;
         }
@@ -55,11 +53,9 @@ char* get_next_project_id(const char* path) {
         return NULL;
     }
 
-    // Loại bỏ newline nếu có (cả \r và \n)
     size_t pos = strcspn(buffer, "\r\n");
-    buffer[pos] = '\0';  // An toàn vì pos <= strlen(buffer)
+    buffer[pos] = '\0';
 
-    // Sao chép chuỗi gốc (dòng 2) để trả về
     char *original = malloc(strlen(buffer) + 1);
     if (original == NULL) {
         fclose(f);
@@ -68,11 +64,9 @@ char* get_next_project_id(const char* path) {
     }
     strcpy(original, buffer);
 
-    // Chuyển sang số rồi tăng
     uint64_t val = strtoull(buffer, NULL, 10);
-    val += 10;
+    val += 1;  // 🔧 Sửa ở đây
 
-    // Ghi lại giá trị mới với định dạng 9 chữ số zero-padded + newline
     fseek(f, line2_pos, SEEK_SET);
     fprintf(f, "%09" PRIu64 "\n", val);
     fclose(f);
@@ -80,21 +74,30 @@ char* get_next_project_id(const char* path) {
     return original;
 }
 
+
 // ...existing code...
 
 Project create_project(const char* creator, const char *name, const char *desc) {
     Project project;
-    memset(&project, 0, sizeof(Project));  // Đảm bảo không có rác
+    memset(&project, 0, sizeof(Project));  // Đảm bảo struct không chứa dữ liệu rác
 
+    // Gán các trường cơ bản
     strncpy(project.name, name, sizeof(project.name) - 1);
     strncpy(project.description, desc, sizeof(project.description) - 1);
-    project.description[sizeof(project.description) - 1] = '\0'; // Đảm bảo chuỗi kết thúc
+    project.description[sizeof(project.description) - 1] = '\0'; // Đảm bảo kết thúc chuỗi
     strncpy(project.ownerID, creator, sizeof(project.ownerID) - 1);
+    project.ownerID[sizeof(project.ownerID) - 1] = '\0';
     project.status = 0;
 
+    // Lấy project ID
     char *id = get_next_project_id(PATH_TO_LASTEST_ID);
+    if (id == NULL) {
+        fprintf(stderr, "Lỗi: Không thể tạo project ID.\n");
+        exit(EXIT_FAILURE);  // Hoặc có thể trả về project trống tuỳ cách bạn muốn xử lý
+    }
 
-    strncpy(project.projectID, id, sizeof(project.projectID) - 1);
+    // Gán ID một cách an toàn
+    snprintf(project.projectID, sizeof(project.projectID), "%s", id);
     free(id);
 
     // TODO: save_Project_to_json(project);
@@ -108,15 +111,12 @@ Project create_project(const char* creator, const char *name, const char *desc) 
 
 
 
+
 // Testinggggg
 
 int main () {
     
-    Project project;
-    project = create_project("Shiro", "Project A", "This is a test project");
-    printf("Project created with ID: %s\n", project.projectID);
-    printf("Project Name: %s\n", project.name);
-    printf("Project Description: %s\n", project.description);
-    printf("Project Owner ID: %s\n", project.ownerID);
-
+    Project p = create_project("creator123", "New Project", "This is a new project description.");
+    char* d = p.projectID;
+    printf("Project ID: %s\n", d);
 }

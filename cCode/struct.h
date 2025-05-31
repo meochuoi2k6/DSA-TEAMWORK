@@ -47,7 +47,7 @@ typedef struct Task {
 
 typedef struct Project {
     char name[50];
-    char projectID[10];
+    char projectID[11];
     char ownerID[8];
     char memberID[MAX_MEMBER][8];
     char description[200];
