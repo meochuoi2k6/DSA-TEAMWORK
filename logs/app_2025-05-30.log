@@ -1,0 +1,5 @@
+[2025-05-30 16:48:54,036] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-30 16:49:02,040] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-30 16:49:18,554] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-05-30 16:49:19,921] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-05-30 16:49:21,091] [WARNING] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang cố gắng tạo dự án mới

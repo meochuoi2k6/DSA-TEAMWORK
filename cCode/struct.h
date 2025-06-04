@@ -34,7 +34,7 @@ typedef struct Member {
 
 //Sử dụng danh sách liên kết để kiểm soát tiến độ công việc
 typedef struct Task {
-    char taskID[10];
+    char taskID[11];
     char projectID[10];
     char title[100];
     char description[200];
@@ -50,12 +50,13 @@ typedef struct Project {
     char projectID[11];
     char ownerID[8];
     char memberID[MAX_MEMBER][8];
+    int currentMember;
     char description[200];
     char startDate[20];
     char endDate[20];
     int status; //0: Pending, 1: Inprogress, 2: Completed, 3: Cancelled
     Member members[10];
-    Task* task;
+    Task* tasks;
 } Project;
 
 

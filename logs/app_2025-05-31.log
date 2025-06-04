@@ -1,0 +1,17 @@
+[2025-05-31 13:45:08,332] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-31 13:45:22,145] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-31 13:45:25,750] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-05-31 13:45:26,594] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-05-31 13:45:27,596] [WARNING] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang cố gắng tạo dự án mới
+[2025-05-31 13:46:26,622] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-31 13:46:32,160] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-31 13:46:33,897] [WARNING] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang cố gắng tạo dự án mới
+[2025-05-31 13:46:36,489] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-05-31 13:46:37,378] [WARNING] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang cố gắng tạo dự án mới
+[2025-05-31 14:31:03,112] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-31 14:31:08,350] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-31 14:33:59,982] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-05-31 14:34:05,190] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-05-31 14:34:09,955] [INFO] [frontend.screens.main_screen] - Người dùng Shiro đang xem danh sách dự án
+[2025-05-31 14:34:11,035] [WARNING] [frontend.screens.main_screen] - Người dùng Shiro đang cố gắng tạo dự án mới
+[2025-05-31 14:34:14,280] [INFO] [frontend.screens.main_screen] - Người dùng Shiro đang xem thông tin cá nhân

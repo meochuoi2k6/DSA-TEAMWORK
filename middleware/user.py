@@ -5,6 +5,7 @@ import os
 from middleware.log import log_setting
 import ctypes
 import datetime as dt
+import credential_check
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ID_PATH = os.path.join(BASE_DIR, "data store", "id.json")
@@ -39,7 +40,8 @@ class Function:
     def __init__(self):
         self.current_command = []
     #def createProject(self, name, description, members):
-
+    def createProject(self, name, description, members, path):
+        return
 
 
 class User(Function):

@@ -68,15 +68,15 @@ class LoginScreen(tk.Frame):
             if user["username"] == username and user["password"] == password:
                 return user["id"]
         return None
-    def get_info (self, user_id):
+    def get_info (self, user_id): #Optimise to O(1)
         filepath = os.path.join(BASE_DIR, "data store", "member.json")
         if not os.path.exists(filepath):
             return None
         with open(filepath, "r", encoding="utf-8") as f:
             members = json.load(f)
-        for member in members:
-            if member["id"] == user_id:
-                return member
+        index = int(user_id)-1
+        if members[index] != None:
+            return members[index]
         return None
             
     def login(self):

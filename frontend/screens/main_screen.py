@@ -110,6 +110,7 @@ class MainScreen(tk.Frame):
         self.display_area.config(state='disabled')
 
     def create_project(self):
+        self.clear_display()
         logger.warning(f"Người dùng {self.user_info.get('name')} đang cố gắng tạo dự án mới")
         self.title_label.config(text="Tạo dự án mới")
         messagebox.showerror("Lỗi", "Tính năng đang trong quá trình phát triển")
