@@ -14,12 +14,14 @@ def main():
     
 
     # Hiển thị cửa sổ Log Screen
-    show_log_window(logger)
+    
     
     #root.iconbitmap(os.path.join(image_path, "logo.ico"))
     def show_main_menu(username):
         main_frame = MainScreen(root, username)
         main_frame.pack()
+        # Hiển thị cửa sổ Log Screen
+        show_log_window(logger)
 
     LoginPage(root, show_main_menu)
     logger.info("Khởi động ứng dụng thành công")

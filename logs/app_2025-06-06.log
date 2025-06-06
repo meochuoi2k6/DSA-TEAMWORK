@@ -30,3 +30,76 @@
 [2025-06-06 15:50:07,337] [INFO] [__main__] - Khởi động ứng dụng thành công
 [2025-06-06 15:50:14,484] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
 [2025-06-06 15:50:14,626] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:23:18,966] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:23:26,427] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:23:26,741] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:32:57,936] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:33:03,183] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:33:06,541] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:33:07,639] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-06-06 21:34:51,434] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:34:57,465] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:34:59,765] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:35:07,677] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-06-06 21:35:09,816] [WARNING] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang cố gắng tạo dự án mới
+[2025-06-06 21:35:25,840] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:35:30,856] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:37:25,542] [WARNING] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang cố gắng tạo dự án mới
+[2025-06-06 21:37:30,917] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:40:24,992] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:40:30,078] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:40:31,839] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-06-06 21:40:34,691] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:40:51,510] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:40:56,555] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:40:58,971] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-06-06 21:41:00,684] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:41:01,317] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:41:01,597] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:41:01,777] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:42:14,115] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:42:23,849] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:42:26,561] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:42:30,518] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:42:30,887] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:42:31,414] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:44:16,985] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:44:27,381] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:44:29,844] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:44:34,326] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:44:35,439] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-06-06 21:44:37,901] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:44:38,496] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-06-06 21:44:41,472] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:45:19,857] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:45:24,348] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:45:25,564] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:45:27,050] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-06-06 21:45:29,541] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:45:31,116] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:45:32,476] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:45:32,888] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:45:33,216] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:45:33,516] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:47:31,077] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:47:40,039] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:47:41,955] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:47:44,443] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-06-06 21:51:09,288] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:51:16,284] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:51:18,660] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:51:20,087] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:51:22,634] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-06-06 21:51:24,773] [WARNING] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang cố gắng tạo dự án mới
+[2025-06-06 21:51:28,213] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:53:30,543] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:53:40,429] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:53:42,694] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:54:27,297] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:54:32,182] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:54:32,660] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:56:20,808] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 21:56:25,291] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 21:56:27,361] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
+[2025-06-06 21:56:27,698] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
+[2025-06-06 21:56:29,645] [WARNING] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang cố gắng tạo dự án mới

@@ -121,7 +121,7 @@ class LoginPage:
 
         for widget in self.root.winfo_children():
             widget.destroy()
-            self.on_login_success(user_name)
+        self.on_login_success(user_name)
         
 
         # MainPage(self.root)
