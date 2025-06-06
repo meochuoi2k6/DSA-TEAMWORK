@@ -219,31 +219,30 @@ Task make_task (const char *projectID, const char *title, const char *descriptio
 
 
 
-// Project create_project(const char* creator, const char *name, const char *desc) {
-//     Project project;
-//     memset(&project, 0, sizeof(Project));  // Đảm bảo struct không chứa dữ liệu rác
+Project create_project(const char* creator, const char *name, const char *desc) {
+    Project project;
+    memset(&project, 0, sizeof(Project));  // Đảm bảo struct không chứa dữ liệu rác
 
-//     // Gán các trường cơ bản
-//     strncpy(project.name, name, sizeof(project.name) - 1);
-//     strncpy(project.description, desc, sizeof(project.description) - 1);
-//     project.description[sizeof(project.description) - 1] = '\0'; // Đảm bảo kết thúc chuỗi
-//     strncpy(project.ownerID, creator, sizeof(project.ownerID) - 1);
-//     project.ownerID[sizeof(project.ownerID) - 1] = '\0';
-//     project.status = 0;
+    // Gán các trường cơ bản
+    strncpy(project.name, name, sizeof(project.name) - 1);
+    strncpy(project.description, desc, sizeof(project.description) - 1);
+    project.description[sizeof(project.description) - 1] = '\0'; // Đảm bảo kết thúc chuỗi
+    strncpy(project.ownerID, creator, sizeof(project.ownerID) - 1);
+    project.ownerID[sizeof(project.ownerID) - 1] = '\0';
+    project.status = 0;
 
-//     // Lấy project ID
-//     char *id = get_next_project_id(PATH_TO_LASTEST_ID);
-//     if (id == NULL) {
-//         fprintf(stderr, "Lỗi: Không thể tạo project ID.\n");
-//         exit(EXIT_FAILURE);  // Hoặc có thể trả về project trống tuỳ cách bạn muốn xử lý
-//     }
+    // Lấy project ID
+    char *id = get_next_project_id(PATH_TO_LASTEST_ID);
+    if (id == NULL) {
+        fprintf(stderr, "Lỗi: Không thể tạo project ID.\n");
+        exit(EXIT_FAILURE);  // Hoặc có thể trả về project trống tuỳ cách bạn muốn xử lý
+    }
 
-//     // Gán ID một cách an toàn
-//     snprintf(project.projectID, sizeof(project.projectID), "%s", id);
-//     free(id);
+    // Gán ID một cách an toàn
+    snprintf(project.projectID, sizeof(project.projectID), "%s", id);
+    free(id);
 
-//     // TODO: save_Project_to_json(project);
+    // TODO: save_Project_to_json(project);
 
-//     return project;
-// }
-
+    return project;
+}
