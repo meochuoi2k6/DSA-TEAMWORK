@@ -103,3 +103,6 @@
 [2025-06-06 21:56:27,361] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
 [2025-06-06 21:56:27,698] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem danh sách dự án
 [2025-06-06 21:56:29,645] [WARNING] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang cố gắng tạo dự án mới
+[2025-06-06 22:03:11,562] [INFO] [__main__] - Khởi động ứng dụng thành công
+[2025-06-06 22:03:18,378] [INFO] [frontend.screens.main_screen] - Đã vào màn hình chính
+[2025-06-06 22:03:19,455] [INFO] [frontend.screens.main_screen] - Người dùng Hoàng Vỹ Kỳ gay vai đang xem thông tin cá nhân
