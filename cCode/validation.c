@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 // ID phải gồm đúng 8 ký tự số ('0' - '9')
 bool isValidMemberID(const char* id) {
