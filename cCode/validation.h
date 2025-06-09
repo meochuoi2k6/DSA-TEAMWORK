@@ -16,6 +16,6 @@ bool isValidEmailFormat(const char* email);
 bool isValidPhoneNumber(const char* phoneNumber);
 
 // Hàm kiểm tra tổng thể Member 
-bool checkMember(const void* member);
+bool checkMember(const Member* member);
 
 #endif // VALIDATION_H

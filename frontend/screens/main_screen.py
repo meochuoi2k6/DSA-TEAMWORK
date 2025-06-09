@@ -50,8 +50,11 @@ class MainScreen(ctk.CTkFrame):
         self.content = ctk.CTkFrame(self, fg_color=DARK_BG)
         self.content.pack(side="right", fill="both", expand=True)
 
-        self.title_label = ctk.CTkLabel(self.content, text="Chào mừng đến hệ thống quản lý dự án",
-                                        font=("Arial", 16), text_color=DARK_TEXT)
+        self.title_label = ctk.CTkLabel(
+            self.content, 
+            text="Chào mừng đến hệ thống quản lý dự án",
+            font=("Arial", 20), 
+            text_color=DARK_TEXT)
         self.title_label.pack(pady=20)
 
         self.display_area = ctk.CTkTextbox(self.content, wrap="word", fg_color=DARK_ENTRY,

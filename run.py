@@ -1,10 +1,10 @@
 from customtkinter import *
 from frontend.screens.login_screen import LoginPage
-from frontend.screens.main_screen import MainScreen
+from frontend.screens.main_screen import MainScreen, AdminScreen
 from middleware.log import log_setting
 from middleware.GuiLogHandler import GuiLogHandler
 from frontend.screens.logScreen import show_log_window
-
+import json
 logger = log_setting(__name__)
 
 def main():
@@ -15,11 +15,23 @@ def main():
 
     # Hiển thị cửa sổ Log Screen
     
-    
+    def isAdmin (username, filepath = "data store/member.json"):
+        if not os.path.exists(filepath):
+            return None
+        with open(filepath, "r", encoding="utf-8") as f:
+            users = json.load(f)
+        for user in users:
+            if user["name"] == username:
+                return user["role"] == 1
+        return False
     #root.iconbitmap(os.path.join(image_path, "logo.ico"))
     def show_main_menu(username):
-        main_frame = MainScreen(root, username)
-        main_frame.pack()
+        if not isAdmin(username):
+            main_frame = MainScreen(root, username)
+            main_frame.pack()
+        else:
+            main_frame = AdminScreen(root, username)
+            main_frame.pack()
         # Hiển thị cửa sổ Log Screen
         show_log_window(logger)
 
