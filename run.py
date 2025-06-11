@@ -1,43 +1,71 @@
-from customtkinter import *
+# File: run.py
+
+import customtkinter as ctk
 from frontend.screens.login_screen import LoginPage
 from frontend.screens.main_screen import MainScreen, AdminScreen
+from frontend.screens.project_detail_screen import ProjectDetailScreen
 from middleware.log import log_setting
-from middleware.GuiLogHandler import GuiLogHandler
-from frontend.screens.logScreen import show_log_window
 import json
-logger = log_setting(__name__)
 
-def main():
+class App(ctk.CTk):
+    def __init__(self, logger):
+        super().__init__()
+        self.logger = logger
+        self.title("Project Management Tool")
+        self.geometry("1100x720")
+        self.current_screen = None
+        self.show_login_screen()
 
-    root = CTk(fg_color="black")
-    root.title("Project Management Tool")
-    
+    def show_login_screen(self):
+        """Hiển thị màn hình đăng nhập."""
+        if self.current_screen:
+            self.current_screen.destroy()
+        
+        self.current_screen = LoginPage(self, on_login_success=self.show_main_menu)
+        # Hiển thị màn hình lên cửa sổ
+        self.current_screen.pack(fill="both", expand=True)
 
-    # Hiển thị cửa sổ Log Screen
-    
-    def isAdmin (username, filepath = "data store/member.json"):
-        if not os.path.exists(filepath):
-            return None
-        with open(filepath, "r", encoding="utf-8") as f:
-            users = json.load(f)
-        for user in users:
-            if user["name"] == username:
-                return user["role"] == 1
+    def is_admin(self, user_info, filepath="data store/member.json"):
+        """Kiểm tra vai trò của người dùng."""
+        user_id = user_info.get("id")
+        if not user_id:
+            return False
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                users = json.load(f)
+            for user in users:
+                if user["id"] == user_id:
+                    return user.get("role") == 1
+        except (FileNotFoundError, json.JSONDecodeError):
+            return False
         return False
-    #root.iconbitmap(os.path.join(image_path, "logo.ico"))
-    def show_main_menu(username):
-        if not isAdmin(username):
-            main_frame = MainScreen(root, username)
-            main_frame.pack()
-        else:
-            main_frame = AdminScreen(root, username)
-            main_frame.pack()
-        # Hiển thị cửa sổ Log Screen
-        show_log_window(logger)
 
-    LoginPage(root, show_main_menu)
-    logger.info("Khởi động ứng dụng thành công")
-    root.mainloop()
+    def show_main_menu(self, user_info):
+        """Hiển thị màn hình chính sau khi đăng nhập thành công."""
+        if self.current_screen:
+            self.current_screen.destroy()
+        
+        if self.is_admin(user_info):
+            self.current_screen = AdminScreen(self, user_info=user_info, logger=self.logger)
+        else:
+            self.current_screen = MainScreen(self, user_info=user_info, logger=self.logger)
+        
+        # === THÊM DÒNG CÒN THIẾU TẠI ĐÂY ===
+        # Hiển thị màn hình lên cửa sổ
+        self.current_screen.pack(fill="both", expand=True)
+        
+    def show_project_detail_screen(self, user_info, project_id):
+        """Hiển thị màn hình chi tiết dự án."""
+        if self.current_screen:
+            self.current_screen.destroy()
+        
+        self.current_screen = ProjectDetailScreen(self, user_info=user_info, logger=self.logger, project_id=project_id, app=self)
+        # === THÊM DÒNG CÒN THIẾU TẠI ĐÂY ===
+        # Hiển thị màn hình lên cửa sổ
+        self.current_screen.pack(fill="both", expand=True)
+
 
 if __name__ == "__main__":
-    main()
+    logger = log_setting(__name__)
+    app = App(logger)
+    app.mainloop()

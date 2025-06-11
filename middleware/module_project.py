@@ -1,111 +1,82 @@
-import datetime as dt
+# File: middleware/module_project.py
 import ctypes
 import os
-from ctypes import POINTER
 
-MAX_MEMBER = 10
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_PATH = os.path.join(BASE_DIR, "data store", "project.json")
-createProject = ctypes.CDLL(os.path.join(BASE_DIR, "cCode", "lib", "createProject.dll"))
+DLL_PATH = os.path.join(BASE_DIR, "cCode", "lib", "createProject.dll")
+
+try:
+    c_lib = ctypes.CDLL(DLL_PATH)
+except OSError as e:
+    print(f"LỖI: Không thể tải file DLL tại đường dẫn: {DLL_PATH}")
+    raise e
+
+# --- Định nghĩa các hàm C ---
+c_create_project = c_lib.create_project
+c_create_project.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_int, ctypes.POINTER(ctypes.c_char_p), ctypes.c_int]
+c_create_project.restype = None
+
+c_delete_project = c_lib.delete_project_by_id
+c_delete_project.argtypes = [ctypes.c_char_p]
+c_delete_project.restype = None
+
+c_add_task = c_lib.add_task_to_project
+c_add_task.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p]
+c_add_task.restype = None
+
+c_get_next_id = c_lib.get_next_id
+c_get_next_id.argtypes = [ctypes.c_char_p]
+c_get_next_id.restype = ctypes.c_char_p
+
+c_free_string = c_lib.free_c_string
+c_free_string.argtypes = [ctypes.c_char_p]
+c_free_string.restype = None
+
+c_update_task_status = c_lib.update_task_status
+c_update_task_status.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p]
+c_update_task_status.restype = None
 
 
-# Define Task structure
-class Task(ctypes.Structure):
-    pass
+# --- Các hàm Python để Frontend gọi ---
 
-Task._fields_ = [
-    ("taskID", ctypes.c_char * 11),
-    ("projectID", ctypes.c_char * 10),
-    ("title", ctypes.c_char * 100),
-    ("description", ctypes.c_char * 200),
-    ("assigneeID", ctypes.c_char * 8),
-    ("dueDate", ctypes.c_char * 20),
-    ("status", ctypes.c_int),
-    ("next", ctypes.POINTER(Task)),
-]
+def get_next_id(id_type: str) -> str:
+    id_bytes = c_get_next_id(id_type.encode('utf-8'))
+    try:
+        py_string = id_bytes.decode('utf-8')
+    finally:
+        c_free_string(id_bytes)
+    return py_string
 
-# Define Project structure
-class Project(ctypes.Structure):
-    _fields_ = [
-        ("name", ctypes.c_char * 50),
-        ("projectID", ctypes.c_char * 11),
-        ("ownerID", ctypes.c_char * 8),
-        ("memberID", (ctypes.c_char * 8) * MAX_MEMBER),
-        ("currentMember", ctypes.c_int),
-        ("description", ctypes.c_char * 200),
-        ("startDate", ctypes.c_char * 20),
-        ("endDate", ctypes.c_char * 20),
-        ("status", ctypes.c_int),
-        ("members", ctypes.c_char * 1 * 10),  # Không sử dụng
-        ("tasks", ctypes.POINTER(Task)),
-    ]
+def create_project(name, description, ownerID, startDate, endDate, status, memberID):
+    c_name = name.encode('utf-8')
+    c_description = description.encode('utf-8')
+    c_ownerID = ownerID.encode('utf-8')
+    c_startDate = startDate.encode('utf-8')
+    c_endDate = endDate.encode('utf-8')
+    currentMember = len(memberID)
+    c_memberID_array = (ctypes.c_char_p * currentMember)()
+    c_memberID_array[:] = [m.encode('utf-8') for m in memberID]
+    c_create_project(c_name, c_description, c_ownerID, c_startDate, c_endDate, status, c_memberID_array, currentMember)
+    print(f"Middleware: Đã gọi C để tạo dự án '{name}'")
 
-    def __init__(self):
-        super().__init__()
-        self._py_name = ""
-        self._py_description = ""
-        self._py_members = []
-        self._py_creator = ""
-        self._py_project_id = b""
-        self._py_start_date = dt.datetime.now().strftime("%Y-%m-%d")
-        self._py_end_date = "Not completed"
-        self.status = 0
-        self.tasks = None
+def delete_project(project_id: str):
+    c_project_id = project_id.encode('utf-8')
+    c_delete_project(c_project_id)
+    print(f"Middleware: Đã gọi C để xóa dự án '{project_id}'")
 
-    def create_project(self, name, description, members, creator_id):
-        self._py_name = name
-        self._py_description = description
-        self._py_members = members
-        self._py_creator = creator_id
-        self._py_project_id = createProject.get_next_project_id(name.encode("utf-8"))
+def add_task(project_id: str, title: str, description: str, assignee_id: str):
+    c_project_id = project_id.encode('utf-8')
+    c_title = title.encode('utf-8')
+    c_description = description.encode('utf-8')
+    c_assignee_id = assignee_id.encode('utf-8') if assignee_id else None
+    c_add_task(c_project_id, c_title, c_description, c_assignee_id)
+    print(f"Middleware: Đã gọi C để thêm task '{title}' vào dự án '{project_id}'")
 
-    def set_status(self, status: int):
-        if status < 0 or status > 3:
-            raise ValueError("Invalid status code. Must be between 0 and 3.")
-        self.status = status
-        self._py_end_date = dt.datetime.now().strftime("%Y-%m-%d") if status == 2 else "Not completed"
-
-    def save_project(self):
-        # Gán dữ liệu vào struct C
-        self.name = self._py_name.encode("utf-8")
-        self.description = self._py_description.encode("utf-8")
-        self.ownerID = self._py_creator.encode("utf-8")
-        self.projectID = self._py_project_id
-        self.startDate = self._py_start_date.encode("utf-8")
-        self.endDate = (self._py_end_date.encode("utf-8")
-                        if self._py_end_date != "Not completed" else b"Not completed")
-
-        for i in range(MAX_MEMBER):
-            self.memberID[i] = (self._py_members[i] if i < len(self._py_members) else b"")
-        self.currentMember = len(self._py_members)
-
-        createProject.save_project_to_json(ctypes.byref(self))
-
-
-# Định nghĩa các hàm từ DLL
-createProject.get_next_project_id.argtypes = [ctypes.c_char_p]
-createProject.get_next_project_id.restype = ctypes.c_char_p
-
-createProject.save_project_to_json.argtypes = [POINTER(Project)]
-createProject.save_project_to_json.restype = None
-
-
-
-# TEST dữ liệu
-if __name__ == "__main__":
-    # Tạo một task
-    task = Task()
-    task.taskID = b"0000000001"
-    task.projectID = b"PJT00001"
-    task.title = b"Task Title"
-    task.description = b"Some description for the task"
-    task.assigneeID = b"USR00001"
-    task.dueDate = b"2025-07-01"
-    task.status = 0
-    task.next = None
-
-    # Tạo một project
-    project = Project()
-    project.create_project("My Project", "A test project", [b"USR00001", b"USR00002"], "USR00001")
-    project.tasks = ctypes.pointer(task)
-    project.save_project()
+def update_task_status(project_id: str, task_id: str, new_status: str):
+    """Hàm Python gọi hàm C để cập nhật trạng thái task."""
+    c_project_id = project_id.encode('utf-8')
+    c_task_id = task_id.encode('utf-8')
+    c_new_status = new_status.encode('utf-8')
+    
+    c_update_task_status(c_project_id, c_task_id, c_new_status)
+    print(f"Middleware: Đã gọi C để cập nhật task '{task_id}' thành trạng thái '{new_status}'")
